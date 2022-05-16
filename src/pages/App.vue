@@ -1,20 +1,19 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from "@/components/HelloWorld.vue";
+import "the-new-css-reset";
+import ArticleLayout from "@/layouts/ArticleLayout.vue";
 </script>
 
 <template>
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <ArticleLayout />
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  font-family: Arial, sans-serif;
+  font-weight: 500; // Yu Gothic hack
+  background-color: $color-background;
+  color: $color-text;
+  font-size: 16px;
+  line-height: 1;
 }
 </style>
