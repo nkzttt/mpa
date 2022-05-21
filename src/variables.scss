@@ -24,6 +24,7 @@ $transparency-medium: 0.45;
 $transparency-low: 0.75;
 
 $size-max-width: 1000px;
+$size-container-padding: 12px;
 
 @mixin media-sp() {
   @media screen and (max-width: 599px) {

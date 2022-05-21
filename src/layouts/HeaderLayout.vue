@@ -20,7 +20,7 @@ import GothicText from "@/components/GothicText.vue";
 .header-layout {
   display: flex;
   align-items: flex-end;
-  padding: 8px 8px 12px;
+  padding: 12px $size-container-padding 16px;
   background-color: $color-secondary;
 }
 .header-logo {

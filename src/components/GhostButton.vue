@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import GothicText from "@/components/GothicText.vue";
-const props = defineProps<{ label: string }>();
+defineProps<{ label: string; onClick: () => void }>();
 </script>
 
 <template>
-  <button class="ghost-button">
+  <button class="ghost-button" @click="onClick">
     <GothicText>
-      {{ props.label }}
+      {{ label }}
     </GothicText>
   </button>
 </template>
@@ -15,7 +15,7 @@ const props = defineProps<{ label: string }>();
 .ghost-button {
   border: solid 1px $color-primary;
   border-radius: 4px;
-  padding: 12px 16px;
+  padding: 8px 16px;
   background-color: $color-background;
   color: $color-primary;
   cursor: pointer;

@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import "the-new-css-reset";
-import ArticleLayout from "@/layouts/ArticleLayout.vue";
 </script>
 
 <template>
-  <ArticleLayout />
+  <slot />
 </template>
 
 <style lang="scss">
@@ -13,7 +12,7 @@ body {
   font-weight: 500; // Yu Gothic hack
   background-color: $color-background;
   color: $color-text;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1;
 }
 </style>

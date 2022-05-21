@@ -1,22 +1,23 @@
 <script setup lang="ts">
 import GothicText from "@/components/GothicText.vue";
-const props = defineProps<{ label: string }>();
+defineProps<{ label: string; href: string }>();
 </script>
 
 <template>
-  <button class="action-button">
+  <a :href="href" class="action-button">
     <GothicText>
-      {{ props.label }}
+      {{ label }}
     </GothicText>
-  </button>
+  </a>
 </template>
 
 <style scoped lang="scss">
 .action-button {
-  border-radius: 4px;
-  padding: 8px;
+  border-radius: 8px;
+  padding: 16px 24px;
   background-color: $color-primary;
   color: $color-background;
+  font-size: 20px;
   cursor: pointer;
   &:hover {
     background-color: $color-sub;

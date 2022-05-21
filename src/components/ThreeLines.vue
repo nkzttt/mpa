@@ -25,7 +25,7 @@ const props = defineProps<{ lines: [string, string, string] }>();
     z-index: 1;
     font-size: 32px;
     font-weight: bold;
-    line-height: 1.2;
+    line-height: 1.3;
     font-feature-settings: "palt";
   }
   &::after {

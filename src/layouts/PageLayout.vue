@@ -14,7 +14,16 @@ import HeaderLayout from "@/layouts/HeaderLayout.vue";
           <slot />
         </div>
       </div>
-      <div class="footer">TODO: footer</div>
+      <div class="footer">
+        <p>
+          筆者：<a
+            href="https://twitter.com/bgn_nakazato"
+            target="_blank"
+            class="footer-twitter"
+            >twitter.com/bgn_nakazato</a
+          >
+        </p>
+      </div>
     </div>
   </MinchoText>
 </template>
@@ -25,7 +34,7 @@ import HeaderLayout from "@/layouts/HeaderLayout.vue";
   flex-direction: column;
   min-height: 100dvh;
   min-height: 100vh;
-  padding-top: 50px;
+  padding-top: 58px;
 }
 .header-layout-container {
   position: fixed;
@@ -48,5 +57,10 @@ import HeaderLayout from "@/layouts/HeaderLayout.vue";
 .footer {
   padding: 48px;
   background-color: $color-secondary;
+  font-size: 14px;
+  text-align: center;
+  &-twitter {
+    text-decoration: underline;
+  }
 }
 </style>

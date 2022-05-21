@@ -8,7 +8,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, "index.html"),
-        books: path.resolve(__dirname, "books/index.html"),
+        whoMovedMyCheese: path.resolve(
+          __dirname,
+          "books/who-moved-my-cheese.html"
+        ),
       },
     },
   },
