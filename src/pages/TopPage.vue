@@ -2,6 +2,7 @@
 import App from "@/App.vue";
 import PageLayout from "@/layouts/PageLayout.vue";
 import GothicText from "@/components/GothicText.vue";
+const base = import.meta.env.BASE_URL;
 </script>
 
 <template>
@@ -18,14 +19,7 @@ import GothicText from "@/components/GothicText.vue";
           <ul>
             <li class="recommend-item">
               <a
-                href="/books/who-moved-my-cheese.html"
-                class="recommend-item-link"
-                >書籍：チーズはどこへ消えた?</a
-              >
-            </li>
-            <li class="recommend-item">
-              <a
-                href="/books/who-moved-my-cheese.html"
+                :href="`${base}books/who-moved-my-cheese.html`"
                 class="recommend-item-link"
                 >書籍：チーズはどこへ消えた?</a
               >

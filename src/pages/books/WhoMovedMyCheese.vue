@@ -7,8 +7,8 @@ import ArticleLayout from "@/layouts/ArticleLayout.vue";
   <App>
     <ArticleLayout
       :item-info="{ type: 'book', title: 'チーズはどこへ消えた?' }"
-      store-url="https://www.amazon.co.jp/dp/B00KD2IK4S/ref=cm_sw_r_tw_dp_S239906RJJS5D17VBEW3"
-      image-url="https://m.media-amazon.com/images/I/41JJqPXGGFL.jpg"
+      store-url="https://www.amazon.co.jp/%E3%83%81%E3%83%BC%E3%82%BA%E3%81%AF%E3%81%A9%E3%81%93%E3%81%B8%E6%B6%88%E3%81%88%E3%81%9F%EF%BC%9F-%E6%89%B6%E6%A1%91%E7%A4%BE%EF%BC%A2%EF%BC%AF%EF%BC%AF%EF%BC%AB%EF%BC%B3-%E3%82%B9%E3%83%9A%E3%83%B3%E3%82%B5%E3%83%BC%E3%83%BB%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%BD%E3%83%B3-ebook/dp/B00KD2IK4S?keywords=%E3%83%81%E3%83%BC%E3%82%BA%E3%81%AF%E3%81%A9%E3%81%93%E3%81%B8%E6%B6%88%E3%81%88%E3%81%9F&qid=1653402170&sprefix=%E3%83%81%E3%83%BC%E3%82%BA%E3%81%AF%2Caps%2C183&sr=8-1&linkCode=ll1&tag=threelines00-22&linkId=536fd811ff83e46dfeecd90a01fee46c&language=ja_JP&ref_=as_li_ss_tl"
+      image-url="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00KD2IK4S&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=&language=ja_JP"
       bought-at="2022/05/16"
       intro="２人の小人と２匹のねずみが自分の大切なもの = チーズとどのように向き合っていくのか？を見ていく物語です。"
       :learning="[

@@ -31,7 +31,11 @@ const getType = (type: typeof props["itemInfo"]["type"]) => {
   }
 };
 
-const lines = props.learning.map(({ line }) => line);
+const lines = props.learning.map(({ line }) => line) as [
+  string,
+  string,
+  string
+];
 </script>
 
 <template>

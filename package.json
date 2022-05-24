@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "prebuild": "npm test",
-    "build": "vite build",
-    "preview": "vite preview",
     "test": "run-p test:*",
     "test:type": "vue-tsc --noEmit",
-    "test:eslint": "eslint --fix \"src/**/*.{js,ts,vue}\""
+    "test:eslint": "eslint --fix \"src/**/*.{js,ts,vue}\"",
+    "prebuild": "npm test && rimraf dist",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "@vueuse/core": "^8.5.0",
@@ -25,6 +26,7 @@
     "eslint-plugin-vue": "^8.7.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
     "sass": "^1.51.0",
     "typescript": "^4.5.4",
     "vite": "^2.9.7",
