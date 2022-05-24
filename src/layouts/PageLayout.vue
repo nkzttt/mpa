@@ -32,8 +32,8 @@ import HeaderLayout from "@/layouts/HeaderLayout.vue";
 .page-layout {
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
   min-height: 100vh;
+  min-height: 100dvh;
   padding-top: 58px;
 }
 .header-layout-container {

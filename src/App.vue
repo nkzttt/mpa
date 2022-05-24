@@ -14,5 +14,6 @@ body {
   color: $color-text;
   font-size: 18px;
   line-height: 1;
+  -webkit-text-size-adjust: 100%;
 }
 </style>

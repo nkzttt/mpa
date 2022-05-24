@@ -32,12 +32,11 @@ export const useSmoothScroll = () => {
     { debounce: 300 }
   );
 
-  const windowScroll = useWindowScroll(window);
   const targetElRef = ref(null);
   const targetBounding = useElementBounding(targetElRef);
   const scrollToTarget = () => {
     disabledTransitionRef.value = false;
-    startScrollPosition = windowScroll.y.value;
+    startScrollPosition = window.scrollY;
     additionalScrollValueRef.value = targetBounding.y.value;
   };
 

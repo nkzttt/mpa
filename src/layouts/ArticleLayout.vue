@@ -189,9 +189,29 @@ const lines = props.learning.map(({ line }) => line);
     margin-top: 48px;
   }
   &-heading {
-    margin-bottom: 12px;
+    position: relative;
+    padding: 12px 0;
+    margin-bottom: 18px;
     font-size: 24px;
     font-feature-settings: "palt";
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: $color-background;
+    }
+    &::before {
+      top: 0;
+      left: -$size-container-padding;
+    }
+    &::after {
+      bottom: 0;
+      left: $size-container-padding;
+    }
   }
 }
 .main-action {
