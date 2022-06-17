@@ -13,6 +13,7 @@ export default defineConfig({
           __dirname,
           "books/who-moved-my-cheese.html"
         ),
+        richDadPoorDad: path.resolve(__dirname, "books/rich-dad-poor-dad.html"),
       },
     },
   },

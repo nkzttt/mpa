@@ -93,9 +93,9 @@ const lines = props.learning.map(({ line }) => line) as [
         </div>
       </div>
       <div class="main-action">
-        <p class="main-action-message">いかがでしょうか？</p>
+        <p class="main-action-message">気になった是非読んでみてください。</p>
         <p class="main-action-message">
-          実際に読んでみると、より深い理解や違った解釈、違った気付きが得られることと思います。
+          もっと多くの気付きや納得感が得られると思います。
         </p>
         <div class="main-action-button">
           <ActionButton label="Amazon でチェック >" :href="storeUrl" />

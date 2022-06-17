@@ -24,6 +24,13 @@ const base = import.meta.env.BASE_URL;
                 >書籍：チーズはどこへ消えた?</a
               >
             </li>
+            <li class="recommend-item">
+              <a
+                :href="`${base}books/rich-dad-poor-dad.html`"
+                class="recommend-item-link"
+                >書籍：金持ち父さん貧乏父さん</a
+              >
+            </li>
           </ul>
         </div>
       </div>
