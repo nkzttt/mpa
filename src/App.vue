@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import "the-new-css-reset";
+import "material-icons/iconfont/outlined.css";
 
 const script = document.createElement("script");
 script.src = "https://www.googletagmanager.com/gtag/js?id=G-LQTPRJFXY9";

@@ -24,10 +24,10 @@ const props = defineProps<{
 const getType = (type: typeof props["itemInfo"]["type"]) => {
   switch (type) {
     case "movie":
-      return "動画";
+      return "movie";
     case "book":
     default:
-      return "書籍";
+      return "auto_stories";
   }
 };
 
@@ -42,9 +42,9 @@ const lines = props.learning.map(({ line }) => line) as [
   <PageLayout>
     <div class="article">
       <p class="intro">
-        {{ getType(itemInfo.type) }}「{{
-          itemInfo.title
-        }}」で学んだことを三行で表すと・・・
+        <span class="material-icons-outlined intro-icon">
+          {{ getType(itemInfo.type) }} </span
+        >{{ itemInfo.title }}で学んだことを三行で表すと・・・
       </p>
       <div class="three-lines-container">
         <ThreeLines :lines="lines" />
@@ -115,6 +115,12 @@ const lines = props.learning.map(({ line }) => line) as [
   padding: 0 $size-container-padding;
   font-size: 14px;
   line-height: 1.4;
+  &-icon {
+    padding: 0 6px 0 2px;
+    color: rgba($color-text, $transparency-low);
+    font-size: 20px;
+    transform: translateY(4px);
+  }
 }
 .three-lines-container {
   padding: 0 $size-container-padding;
