@@ -27,6 +27,7 @@ const props = defineProps<{ lines: [string, string, string] }>();
     font-weight: bold;
     line-height: 1.3;
     font-feature-settings: "palt";
+    letter-spacing: 0.035em;
   }
   &::after {
     content: "";

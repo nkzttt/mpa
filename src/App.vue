@@ -22,7 +22,7 @@ body {
   font-weight: 500; // Yu Gothic hack
   background-color: $color-background;
   color: $color-text;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1;
   -webkit-text-size-adjust: 100%;
 }

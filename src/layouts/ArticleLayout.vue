@@ -164,6 +164,7 @@ const lines = props.learning.map(({ line }) => line) as [
     background-color: $color-primary;
     color: $color-background;
     line-height: 1.9;
+    letter-spacing: 0.025em;
     &::before,
     &::after {
       content: "";
@@ -195,7 +196,7 @@ const lines = props.learning.map(({ line }) => line) as [
   &-heading {
     position: relative;
     padding: 12px 0;
-    margin-bottom: 18px;
+    margin-bottom: 40px;
     font-size: 24px;
     font-feature-settings: "palt";
     &::before,
