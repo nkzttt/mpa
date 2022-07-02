@@ -8,11 +8,14 @@ defineProps<{ label: string; href: string }>();
     <GothicText>
       {{ label }}
     </GothicText>
+    <slot name="addition" />
   </a>
 </template>
 
 <style scoped lang="scss">
 .action-button {
+  display: flex;
+  align-items: center;
   border-radius: 8px;
   padding: 16px 24px;
   background-color: $color-primary;

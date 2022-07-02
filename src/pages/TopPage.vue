@@ -3,6 +3,21 @@ import App from "@/App.vue";
 import PageLayout from "@/layouts/PageLayout.vue";
 import GothicText from "@/components/GothicText.vue";
 const base = import.meta.env.BASE_URL;
+
+const books = [
+  {
+    href: `${base}books/who-moved-my-cheese.html`,
+    title: "チーズはどこへ消えた?",
+  },
+  {
+    href: `${base}books/rich-dad-poor-dad.html`,
+    title: "金持ち父さん貧乏父さん",
+  },
+  {
+    href: `${base}books/psychology-of-money.html`,
+    title: "サイコロジー・オブ・マネー",
+  },
+];
 </script>
 
 <template>
@@ -17,19 +32,24 @@ const base = import.meta.env.BASE_URL;
             <GothicText>おすすめの紹介記事</GothicText>
           </h2>
           <ul>
-            <li class="recommend-item">
-              <a
-                :href="`${base}books/who-moved-my-cheese.html`"
-                class="recommend-item-link"
-                >書籍：チーズはどこへ消えた?</a
-              >
-            </li>
-            <li class="recommend-item">
-              <a
-                :href="`${base}books/rich-dad-poor-dad.html`"
-                class="recommend-item-link"
-                >書籍：金持ち父さん貧乏父さん</a
-              >
+            <li
+              v-for="{ href, title } in books"
+              :key="title"
+              class="recommend-item"
+            >
+              <a :href="href" class="recommend-item-link">
+                <div class="material-icons-outlined recommend-item-link-icon">
+                  auto_stories
+                </div>
+                <p class="span recommend-item-link-label">
+                  {{ title }}
+                </p>
+                <div
+                  class="material-icons-outlined recommend-item-link-chevron"
+                >
+                  chevron_right
+                </div>
+              </a>
             </li>
           </ul>
         </div>
@@ -61,11 +81,16 @@ const base = import.meta.env.BASE_URL;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      &::after {
-        content: "\203A";
-        display: block;
-        color: rgba($color-primary, $transparency-low);
-        font-size: 24px;
+      &-icon {
+        margin-right: 8px;
+        color: rgba($color-text, $transparency-low);
+        font-size: 20px;
+      }
+      &-label {
+        flex: 1;
+      }
+      &-chevron {
+        color: rgba($color-text, $transparency-low);
       }
     }
   }

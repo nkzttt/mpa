@@ -1,6 +1,7 @@
 import * as path from "path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import inputs from "./build-inputs";
 
 export default defineConfig({
   plugins: [vue()],
@@ -9,11 +10,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, "index.html"),
-        whoMovedMyCheese: path.resolve(
-          __dirname,
-          "books/who-moved-my-cheese.html"
-        ),
-        richDadPoorDad: path.resolve(__dirname, "books/rich-dad-poor-dad.html"),
+        ...inputs,
       },
     },
   },

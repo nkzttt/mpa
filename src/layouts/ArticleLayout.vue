@@ -30,6 +30,15 @@ const getType = (type: typeof props["itemInfo"]["type"]) => {
       return "auto_stories";
   }
 };
+const getTypeLabel = (type: typeof props["itemInfo"]["type"]) => {
+  switch (type) {
+    case "movie":
+      return "動画";
+    case "book":
+    default:
+      return "書籍";
+  }
+};
 
 const lines = props.learning.map(({ line }) => line) as [
   string,
@@ -41,22 +50,34 @@ const lines = props.learning.map(({ line }) => line) as [
 <template>
   <PageLayout>
     <div class="article">
-      <p class="intro">
-        <span class="material-icons-outlined intro-icon">
-          {{ getType(itemInfo.type) }} </span
-        >{{ itemInfo.title }}で学んだことを三行で表すと・・・
-      </p>
+      <div class="intro">
+        <div class="material-icons-outlined intro-icon">
+          {{ getType(itemInfo.type) }}
+        </div>
+        <p class="intro-lines">
+          {{ itemInfo.title }}で学んだことを三行で表すと・・・
+        </p>
+      </div>
       <div class="three-lines-container">
         <ThreeLines :lines="lines" />
       </div>
       <div class="first-action">
         <div class="first-action-button">
-          <GhostButton label="もっと詳しく ↓" :on-click="scrollToTarget" />
+          <GhostButton label="もっと詳しく" :on-click="scrollToTarget">
+            <template #addition>
+              <span class="material-icons-outlined first-action-button-icon">
+                keyboard_double_arrow_down
+              </span>
+            </template>
+          </GhostButton>
         </div>
         <div>
-          <p class="first-action-purchase">
-            <a :href="storeUrl"> Amazon でチェック > </a>
-          </p>
+          <a :href="storeUrl" class="first-action-purchase">
+            <GothicText> Amazon でチェック </GothicText>
+            <span class="material-icons-outlined first-action-purchase-icon">
+              chevron_right
+            </span>
+          </a>
         </div>
       </div>
       <div ref="targetElRef" class="detail">
@@ -68,10 +89,11 @@ const lines = props.learning.map(({ line }) => line) as [
         </div>
         <div class="detail-body">
           <p class="detail-body-intro">
-            {{ getType(itemInfo.type) }}「{{ itemInfo.title }}」は、{{ intro
+            {{ getTypeLabel(itemInfo.type) }}「{{ itemInfo.title }}」は、{{
+              intro
             }}<br />
             この{{
-              getType(itemInfo.type)
+              getTypeLabel(itemInfo.type)
             }}から私が得たことは以下の３つです。<br />
           </p>
           <div>
@@ -81,9 +103,11 @@ const lines = props.learning.map(({ line }) => line) as [
               class="leaning"
             >
               <h2 class="leaning-heading">
-                <GothicText>
-                  {{ line }}
-                </GothicText>
+                <span class="leaning-heading-label">
+                  <GothicText>
+                    {{ line }}
+                  </GothicText>
+                </span>
               </h2>
               <p v-for="text in detail" :key="text">
                 {{ text }}
@@ -93,12 +117,22 @@ const lines = props.learning.map(({ line }) => line) as [
         </div>
       </div>
       <div class="main-action">
-        <p class="main-action-message">気になった是非読んでみてください。</p>
         <p class="main-action-message">
-          もっと多くの気付きや納得感が得られると思います。
+          {{ getTypeLabel(itemInfo.type) }}「{{
+            itemInfo.title
+          }}」で学んだことでした。
+        </p>
+        <p class="main-action-message">
+          もっと多くのことを学びたくなった、知りたくなったら書籍を手に取ってみてください。
         </p>
         <div class="main-action-button">
-          <ActionButton label="Amazon でチェック >" :href="storeUrl" />
+          <ActionButton label="Amazon でチェック" :href="storeUrl">
+            <template #addition>
+              <span class="material-icons-outlined main-action-button-icon">
+                chevron_right
+              </span>
+            </template>
+          </ActionButton>
         </div>
       </div>
     </div>
@@ -111,15 +145,18 @@ const lines = props.learning.map(({ line }) => line) as [
   overflow: hidden;
 }
 .intro {
+  display: flex;
   margin: 32px 0 64px;
   padding: 0 $size-container-padding;
   font-size: 14px;
   line-height: 1.4;
   &-icon {
-    padding: 0 6px 0 2px;
-    color: rgba($color-text, $transparency-low);
+    margin-right: 8px;
+    color: $color-secondary;
     font-size: 20px;
-    transform: translateY(4px);
+  }
+  &-lines {
+    flex: 1;
   }
 }
 .three-lines-container {
@@ -133,10 +170,20 @@ const lines = props.learning.map(({ line }) => line) as [
   margin-bottom: 144px;
   &-button {
     margin-right: 24px;
+    &-icon {
+      padding-left: 4px;
+      font-size: 22px;
+    }
   }
   &-purchase {
     color: rgba($color-text, $transparency-low);
-    font-size: 14px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    &-icon {
+      font-size: 20px;
+      transform: translateY(-1px);
+    }
   }
 }
 .detail {
@@ -191,37 +238,37 @@ const lines = props.learning.map(({ line }) => line) as [
       transform: translate(-50vw, 40px) rotate(3deg);
     }
     &-intro {
-      margin-bottom: 48px;
+      margin-bottom: 64px;
     }
   }
 }
 .leaning {
   & + & {
-    margin-top: 48px;
+    margin-top: 64px;
   }
   &-heading {
     position: relative;
-    padding: 12px 0;
     margin-bottom: 40px;
     font-size: 24px;
     font-feature-settings: "palt";
-    &::before,
+    &-label {
+      display: table;
+      position: relative;
+      z-index: 1;
+      margin: 0 auto;
+      padding: 0 8px;
+      background-color: $color-primary;
+    }
     &::after {
       content: "";
       position: absolute;
-      left: 0;
+      top: 50%;
+      left: -50%;
       display: block;
-      width: 100%;
+      width: 200%;
       height: 2px;
       background-color: $color-background;
-    }
-    &::before {
-      top: 0;
-      left: -$size-container-padding;
-    }
-    &::after {
-      bottom: 0;
-      left: $size-container-padding;
+      transform: rotate(3deg);
     }
   }
 }
@@ -233,7 +280,12 @@ const lines = props.learning.map(({ line }) => line) as [
   &-button {
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 64px;
+    &-icon {
+      display: block;
+      font-size: 32px;
+      transform: translate(8px, -1px);
+    }
   }
 }
 </style>

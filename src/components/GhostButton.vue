@@ -4,15 +4,18 @@ defineProps<{ label: string; onClick: () => void }>();
 </script>
 
 <template>
-  <button class="ghost-button" @click="onClick">
+  <div class="ghost-button" @click="onClick">
     <GothicText>
       {{ label }}
     </GothicText>
-  </button>
+    <slot name="addition" />
+  </div>
 </template>
 
 <style scoped lang="scss">
 .ghost-button {
+  display: flex;
+  align-items: center;
   border: solid 1px $color-primary;
   border-radius: 4px;
   padding: 8px 16px;
