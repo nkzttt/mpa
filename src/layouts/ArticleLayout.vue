@@ -51,8 +51,10 @@ const lines = props.learning.map(({ line }) => line) as [
   <PageLayout>
     <div class="article">
       <div class="intro">
-        <div class="material-icons-outlined intro-icon">
-          {{ getType(itemInfo.type) }}
+        <div class="intro-visual">
+          <div class="material-icons-outlined intro-visual-icon">
+            {{ getType(itemInfo.type) }}
+          </div>
         </div>
         <p class="intro-lines">
           {{ itemInfo.title }}で学んだことを三行で表すと・・・
@@ -146,14 +148,18 @@ const lines = props.learning.map(({ line }) => line) as [
 }
 .intro {
   display: flex;
-  margin: 32px 0 64px;
+  align-items: center;
+  margin: 16px 0 32px;
   padding: 0 $size-container-padding;
   font-size: 14px;
   line-height: 1.4;
-  &-icon {
-    margin-right: 8px;
-    color: $color-secondary;
-    font-size: 20px;
+  &-visual {
+    margin-left: -48px;
+    margin-right: 16px;
+    &-icon {
+      color: rgba($color-secondary, $transparency-medium);
+      font-size: 96px;
+    }
   }
   &-lines {
     flex: 1;
@@ -188,7 +194,7 @@ const lines = props.learning.map(({ line }) => line) as [
 }
 .detail {
   padding-top: $size-container-padding;
-  margin-bottom: 144px;
+  margin-bottom: 178px;
   &-visual {
     position: relative;
     z-index: 2;
@@ -198,7 +204,6 @@ const lines = props.learning.map(({ line }) => line) as [
     padding: 0 $size-container-padding;
     &-image {
       width: 50%;
-      box-shadow: 8px 16px 0 $color-primary;
       > img {
         width: 100%;
         height: auto;
@@ -231,10 +236,14 @@ const lines = props.learning.map(({ line }) => line) as [
     }
     &::before {
       top: 0;
+      box-shadow: 0 -10px $color-background, 0 -20px $color-primary,
+        0 -40px $color-background, 0 -45px $color-primary;
       transform: translate(-50vw, -40px) rotate(3deg);
     }
     &::after {
       bottom: 0;
+      box-shadow: 0 10px $color-background, 0 20px $color-primary,
+        0 40px $color-background, 0 45px $color-primary;
       transform: translate(-50vw, 40px) rotate(3deg);
     }
     &-intro {

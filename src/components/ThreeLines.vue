@@ -33,11 +33,11 @@ const props = defineProps<{ lines: [string, string, string] }>();
     content: "";
     display: block;
     position: absolute;
-    top: 0;
+    bottom: -15%;
     left: -2%;
     z-index: -1;
     width: 104%;
-    height: 100%;
+    height: 85%;
     background-color: rgba($color-secondary, $transparency-high);
     transform: translate(3px, 3px) rotate(3deg);
     @include media-tab {
