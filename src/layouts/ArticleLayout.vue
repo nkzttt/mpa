@@ -149,7 +149,7 @@ const lines = props.learning.map(({ line }) => line) as [
 .intro {
   display: flex;
   align-items: center;
-  margin: 16px 0 32px;
+  margin: 16px 0;
   padding: 0 $size-container-padding;
   font-size: 14px;
   line-height: 1.4;
@@ -167,7 +167,7 @@ const lines = props.learning.map(({ line }) => line) as [
 }
 .three-lines-container {
   padding: 0 $size-container-padding;
-  margin-bottom: 80px;
+  margin-bottom: 64px;
 }
 .first-action {
   display: flex;
@@ -194,7 +194,7 @@ const lines = props.learning.map(({ line }) => line) as [
 }
 .detail {
   padding-top: $size-container-padding;
-  margin-bottom: 178px;
+  margin-bottom: 200px;
   &-visual {
     position: relative;
     z-index: 2;
@@ -218,7 +218,7 @@ const lines = props.learning.map(({ line }) => line) as [
     position: relative;
     z-index: 1;
     margin-top: -120px;
-    padding: 144px $size-container-padding 40px;
+    padding-top: 144px;
     background-color: $color-primary;
     color: $color-background;
     line-height: 1.9;
@@ -236,49 +236,63 @@ const lines = props.learning.map(({ line }) => line) as [
     }
     &::before {
       top: 0;
-      box-shadow: 0 -10px $color-background, 0 -20px $color-primary,
-        0 -40px $color-background, 0 -45px $color-primary;
+      box-shadow: 0 -10px $color-background, 0 -17px $color-primary,
+        0 -40px $color-background, 0 -43px $color-primary;
       transform: translate(-50vw, -40px) rotate(3deg);
     }
     &::after {
-      bottom: 0;
-      box-shadow: 0 10px $color-background, 0 20px $color-primary,
-        0 40px $color-background, 0 45px $color-primary;
+      bottom: 120px;
+      box-shadow: 0 10px $color-background, 0 17px $color-primary,
+        0 40px $color-background, 0 43px $color-primary,
+        0 120px $color-background;
       transform: translate(-50vw, 40px) rotate(3deg);
     }
     &-intro {
       margin-bottom: 64px;
+      padding: 0 $size-container-padding;
     }
   }
 }
 .leaning {
+  position: relative;
+  margin: 0 $size-container-padding;
+  padding: 32px $size-container-padding;
+  background: $color-background;
+  color: $color-primary;
   & + & {
-    margin-top: 64px;
+    margin-top: 32px;
+  }
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 2px;
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: $color-background;
+  }
+  &::before {
+    transform: rotate(30deg);
+  }
+  &::after {
+    transform: rotate(-30deg);
+  }
+  &:last-child {
+    &::before,
+    &::after {
+      content: none;
+    }
   }
   &-heading {
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     font-size: 24px;
+    line-height: 1.4;
     font-feature-settings: "palt";
-    &-label {
-      display: table;
-      position: relative;
-      z-index: 1;
-      margin: 0 auto;
-      padding: 0 8px;
-      background-color: $color-primary;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: -50%;
-      display: block;
-      width: 200%;
-      height: 2px;
-      background-color: $color-background;
-      transform: rotate(3deg);
-    }
   }
 }
 .main-action {
@@ -289,7 +303,7 @@ const lines = props.learning.map(({ line }) => line) as [
   &-button {
     display: flex;
     justify-content: center;
-    margin-top: 64px;
+    margin-top: 48px;
     &-icon {
       display: block;
       font-size: 32px;

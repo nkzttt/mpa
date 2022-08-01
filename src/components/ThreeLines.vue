@@ -20,6 +20,10 @@ const props = defineProps<{ lines: [string, string, string] }>();
 .line {
   position: relative;
   z-index: 1;
+  padding-bottom: 64px;
+  &:last-child {
+    padding-bottom: 0;
+  }
   &-text {
     position: relative;
     z-index: 1;
@@ -29,26 +33,30 @@ const props = defineProps<{ lines: [string, string, string] }>();
     font-feature-settings: "palt";
     letter-spacing: 0.035em;
   }
+  &::before,
   &::after {
     content: "";
     display: block;
+    width: 50px;
+    height: 1px;
     position: absolute;
-    bottom: -15%;
-    left: -2%;
-    z-index: -1;
-    width: 104%;
-    height: 85%;
-    background-color: rgba($color-secondary, $transparency-high);
-    transform: translate(3px, 3px) rotate(3deg);
-    @include media-tab {
-      transform: translate(3px, 3px) rotate(2deg);
-    }
-    @include media-pc {
-      transform: translate(3px, 3px) rotate(1.5deg);
-    }
+    bottom: 32px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: $color-secondary;
   }
-  & + & {
-    margin-top: 48px;
+  &::before {
+    transform: rotate(30deg);
+  }
+  &::after {
+    transform: rotate(-30deg);
+  }
+  &:last-child {
+    &::before,
+    &::after {
+      content: none;
+    }
   }
 }
 </style>
