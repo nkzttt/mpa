@@ -1,23 +1,9 @@
 <script setup lang="ts">
+import articles from "@/articles.json";
 import App from "@/App.vue";
 import PageLayout from "@/layouts/PageLayout.vue";
 import GothicText from "@/components/GothicText.vue";
 const base = import.meta.env.BASE_URL;
-
-const books = [
-  {
-    href: `${base}books/who-moved-my-cheese.html`,
-    title: "チーズはどこへ消えた?",
-  },
-  {
-    href: `${base}books/rich-dad-poor-dad.html`,
-    title: "金持ち父さん貧乏父さん",
-  },
-  {
-    href: `${base}books/psychology-of-money.html`,
-    title: "サイコロジー・オブ・マネー",
-  },
-];
 </script>
 
 <template>
@@ -33,11 +19,11 @@ const books = [
           </h2>
           <ul>
             <li
-              v-for="{ href, title } in books"
+              v-for="{ file, title } in articles"
               :key="title"
               class="recommend-item"
             >
-              <a :href="href" class="recommend-item-link">
+              <a :href="`${base}${file}`" class="recommend-item-link">
                 <div class="material-icons-outlined recommend-item-link-icon">
                   auto_stories
                 </div>

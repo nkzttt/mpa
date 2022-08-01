@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useWindowScroll } from "@vueuse/core";
+import articles from "@/articles.json";
 import PageLayout from "@/layouts/PageLayout.vue";
 import ThreeLines from "@/components/ThreeLines.vue";
 import GhostButton from "@/components/GhostButton.vue";
@@ -6,6 +8,16 @@ import ActionButton from "@/components/ActionButton.vue";
 import GothicText from "@/components/GothicText.vue";
 import { useSmoothScroll } from "@/composables/useSmoothScroll";
 
+const base = import.meta.env.BASE_URL;
+const index = articles.findIndex(({ file }) =>
+  new RegExp(file).test(location.pathname)
+);
+const links = {
+  prev: articles[index - 1] ? `${base}${articles[index - 1].file}` : null,
+  next: articles[index + 1] ? `${base}${articles[index + 1].file}` : null,
+};
+
+const { y } = useWindowScroll();
 const { targetElRef, scrollToTarget } = useSmoothScroll();
 
 const props = defineProps<{
@@ -57,7 +69,7 @@ const lines = props.learning.map(({ line }) => line) as [
           </div>
         </div>
         <p class="intro-lines">
-          {{ itemInfo.title }}で学んだことを三行で表すと・・・
+          「{{ itemInfo.title }}」で学んだことを三行で表すと・・・
         </p>
       </div>
       <div class="three-lines-container">
@@ -137,13 +149,52 @@ const lines = props.learning.map(({ line }) => line) as [
           </ActionButton>
         </div>
       </div>
+      <ul v-if="!!links.prev || !!links.next" class="links">
+        <li class="links-item">
+          <a v-if="!!links.prev" :href="links.prev" class="link">
+            <span class="material-icons-outlined link-icon"> arrow_back </span>
+            <span class="link-label"> 前の記事 </span>
+          </a>
+        </li>
+        <li class="links-item">
+          <a v-if="!!links.next" :href="links.next" class="link">
+            <span class="link-label"> 次の記事 </span>
+            <span class="material-icons-outlined link-icon">
+              arrow_forward
+            </span>
+          </a>
+        </li>
+      </ul>
+      <div
+        v-if="!!links.prev || !!links.next"
+        class="fixed-links"
+        :class="{ 'fixed-links-hide': y > 10 }"
+      >
+        <ul class="fixed-links-list">
+          <li class="fixed-links-list-item">
+            <a v-if="!!links.prev" :href="links.prev" class="fixed-link">
+              <span class="material-icons-outlined fixed-link-icon">
+                arrow_back
+              </span>
+            </a>
+          </li>
+          <li class="fixed-links-list-item">
+            <a v-if="!!links.next" :href="links.next" class="fixed-link">
+              <span class="material-icons-outlined fixed-link-icon">
+                arrow_forward
+              </span>
+            </a>
+          </li>
+        </ul>
+        <p class="fixed-links-description">前後の記事へ</p>
+      </div>
     </div>
   </PageLayout>
 </template>
 
 <style scoped lang="scss">
 .article {
-  padding-bottom: 80px;
+  padding-bottom: 120px;
   overflow: hidden;
 }
 .intro {
@@ -194,7 +245,7 @@ const lines = props.learning.map(({ line }) => line) as [
 }
 .detail {
   padding-top: $size-container-padding;
-  margin-bottom: 200px;
+  margin-bottom: 144px;
   &-visual {
     position: relative;
     z-index: 2;
@@ -309,6 +360,60 @@ const lines = props.learning.map(({ line }) => line) as [
       font-size: 32px;
       transform: translate(8px, -1px);
     }
+  }
+}
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 120px;
+  padding: 0 $size-container-padding;
+}
+.link {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px $color-primary;
+  &-icon {
+    font-size: 20px;
+    transform: translateY(-1px);
+  }
+  &-label {
+    padding: 0 4px;
+  }
+}
+.fixed-links {
+  position: fixed;
+  right: $size-container-padding;
+  bottom: $size-container-padding;
+  z-index: 99;
+  width: 100px;
+  padding-bottom: 12px;
+  background-color: $color-background;
+  box-shadow: 0 0 24px rgba($color-sub, $transparency-medium);
+  transition: opacity 200ms linear;
+  &-hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+  &-list {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-description {
+    color: rgba($color-text, $transparency-low);
+    font-size: 12px;
+    text-align: center;
+  }
+}
+.fixed-link {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &-icon {
+    color: $color-sub;
+    font-size: 32px;
   }
 }
 </style>
