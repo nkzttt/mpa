@@ -8,4 +8,8 @@ export default {
     __dirname,
     "books/predictably-irrational.html"
   ),
+  illustratedIntroductionToEconomics: path.resolve(
+    __dirname,
+    "books/illustrated-introduction-to-economics.html"
+  ),
 };
