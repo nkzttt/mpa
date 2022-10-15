@@ -12,4 +12,5 @@ export default {
     __dirname,
     "books/illustrated-introduction-to-economics.html"
   ),
+  bestWayToRest: path.resolve(__dirname, "books/best-way-to-rest.html"),
 };
