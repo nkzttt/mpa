@@ -17,6 +17,7 @@ const inputs = {
     __dirname,
     "books/technique-of-good-question.html"
   ),
+  importantListening: path.resolve(__dirname, "books/important-listening.html"),
 };
 
 export const titles: Record<keyof typeof inputs, string> = {
@@ -27,6 +28,7 @@ export const titles: Record<keyof typeof inputs, string> = {
   illustratedIntroductionToEconomics: "たった1つの図でわかる! 図解経済学入門",
   bestWayToRest: "最高の休息法",
   techniqueOfGoodQuestion: "「良い質問」をする技術",
+  importantListening: "人は聞き方が９割",
 };
 
 export default inputs;
